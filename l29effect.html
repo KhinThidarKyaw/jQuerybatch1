@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Effects Method</title>
+		<style type="text/css">
+			
+			body{
+				height: 100vh;
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				flex-direction: column;
+			}
+
+			.container{
+				width: 900px;
+				background-color: #f4f4f4;
+				padding: 20px;
+
+				display: flex;
+			}
+
+			.box{
+				width: 150px;
+				height: 300px;
+				margin: 0 10px;
+			}
+
+			.square1{
+				background-color: green;
+			}
+
+			.square2{
+				background-color: orange;
+			}
+
+			.square3{
+				background-color: blue;
+			}
+
+			.square4{
+				background-color: violet;
+			}
+
+			.square5{
+				background-color: grey;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="container">
+			
+			<div class="box square1">1</div>
+			<div class="box square2">2</div>
+			<div class="box square3">3</div>
+			<div class="box square4">4</div>
+			<div class="box square5">5</div>
+
+		</div>
+
+		<div class="control">
+			
+			<button type="button" id="hidebtn">Hide</button>
+			<button type="button" id="showbtn">Show</button>
+			<button type="button" id="tgbtn">Toggle</button>
+			<button type="button" id="fdoutbtn">fadeout</button>
+			<button type="button" id="fdinbtn">fadein</button>
+			<button type="button" id="fdtogglebtn">fadetoggle</button>
+			<button type="button" id="fdtobtn">fadeto</button>
+			<button type="button" id="sldupbtn">slideUp</button>
+			<button type="button" id="slddownbtn">slideDown</button>
+			<button type="button" id="sldtgbtn">slideToggle</button>
+			<button type="button" id="animatebtn">animate</button>
+			<button type="button" id="delaybtn">delay</button>
+			<button type="button" id="clickmebtn">Click Me</button>
+			<button type="button" id="stopbtn">Stop</button>
+			<button type="button" id="stoptruebtn">Stop(true)</button>
+			<button type="button" id="finishbtn">Finish</button>
+			<button type="button" id="dqbtn">Dequeue</button>
+			<button type="button" id="cqbtn">Clear Queue</button>
+		</div>
+		
+		<script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			
+			$(document).ready(function(){
+
+				// console.log('hi');
+
+				// (i) Display Effects
+
+				// hide()
+
+				// $(selector).hide();
+				// $(selector).hide(speed);
+				// $(selector).hide(speed,callback);
+
+
+				$("#hidebtn").click(function(){
+
+					// $(".square1").hide();
+					// $(".square1,.square2").hide();
+
+					// $(".box").even().hide();
+					// $(".box").odd().hide();
+
+					// 1s = 1000ms
+					// $(".square1").hide(1000);
+					$(".square1").hide("slow");
+
+					// $(".square1").hide(1000,function(){
+					// 	// $(".square2").hide(1500);
+
+					// 	$(".square2,.square3").hide(1500,function(){
+					// 		$(".square4,.square5").hide(2000);
+					// 	});
+					// });
+
+				});
+
+				//show()
+				$("#showbtn").click(function(){
+
+					$(".square1").show();
+					$(".square1,.square3").show();
+
+					// $(".box").even().show(1000);
+					// $(".box").odd().show(1000);
+
+					// $(".square1").show(1000,function(){
+						// $(".square2").hide(1500);
+
+					// 	$(".square2,.square3").show(1500,function(){
+					// 		$(".square4,.square5").show(2000);
+					// 	});
+					// });
+
+
+
+				});
+
+				//toggle()
+
+				$("#tgbtn").click(function(){
+
+					$(".square1").toggle();
+					$(".square1,.square3").toggle();
+
+
+					$(".square1").toggle(1000,function(){
+						$(".square2").toggle(1500);
+
+					});
+				});
+
+				// ___________________________________________________________________
+
+				// (ii)Fading Effects
+				// fadeOut()
+
+				$("#fdoutbtn").click(function(){
+
+					// $(".square1").fadeOut();
+					// $(".square1,.square3").fadeOut();
+
+					// $(".box").even().show(1000);
+					// $(".box").odd().show(1000);
+
+					$(".square1").fadeOut(1000,function(){
+						$(".square2").fadeOut(1500);
+
+						$(".square2,.square3").fadeOut(1500,function(){
+							$(".square4,.square5").fadeOut(2000);
+						});
+					});
+
+
+				});
+
+				//fadeIn()
+				$("#fdinbtn").click(function(){
+
+					// $(".square1").fadeIn();
+					// $(".square1,.square3").fadeIn();
+
+					// $(".box").even().show(1000);
+					// $(".box").odd().show(1000);
+
+					$(".square1").fadeIn(1000,function(){
+						$(".square2").fadeIn(1500);
+
+						
+					});
+
+				});
+
+				//fadeToggle()
+
+				$("#fdtogglebtn").click(function(){
+
+					// $(".square1").fadeToggle();
+					// $(".square1,.square3").fadeToggle();
+
+					// $(".box").even().show(1000);
+					// $(".box").odd().show(1000);
+
+					$(".square1").fadeToggle(1000,function(){
+						$(".square2").fadeToggle(1500);
+
+						
+					});
+
+				});
+
+				//fadeTo() -> element pl pyout tl spacing ma pyout buu
+				
+				// $(selector).fadeTo(speed,opacity);
+				// $(selector).fadeTo(speed,opacity,callback);
+				// opacity = 0 to 1 (1 default)
+
+				$("#fdtobtn").click(function(){
+					$(".square1").fadeTo(1000,0.5,function(){
+						$(".square2").fadeTo(1500,0);
+
+						
+					});
+
+				});
+				// ___________________________________________________________________
+
+				// (iii)Sliding Effects
+
+				// slideUp()
+				$("#sldupbtn").click(function(){
+
+					$(".square1").slideUp();
+
+					$(".square1").slideUp(1000,function(){
+						$(".square2").slideUp(1500);
+
+						
+					});
+
+				});
+
+				// slideDown()
+				$("#slddownbtn").click(function(){
+
+					$(".square1").slideDown(1000,function(){
+						$(".square2").slideDown(1500);
+
+						
+					});
+				});
+
+				//slideToggle()
+				$("#sldtgbtn").click(function(){
+
+					$(".square1").slideToggle(1000,function(){
+						$(".square2").slideToggle(1500);
+
+						
+					});
+				});
+
+				// ___________________________________________________________________
+
+				// (iv) Other Effects
+
+				// animate()
+
+				// $(selector).animate({params});
+				// $(selector).animate({params},speed);
+				// $(selector).animate({params},speed,callback);
+
+				$("#animatebtn").click(function(){
+
+					// $(".square1").animate({"height":"50%"});
+					// $(".square1,.square2").animate();
+
+					// $(".box").even().animate({"height":"50%"});
+					// $(".box").odd().animate({"height":"50%"});
+
+					// 1s = 1000ms
+					// $(".square1").animate({"height":"50%"},1000);
+					// $(".square1").animate({"height":"50%"},"slow");
+
+					
+
+						$(".square2,.square3").animate({"height":"50%"},1500,function(){
+							$(".square4,.square5").animate({"height":"30%"},2000);
+						});
+					
+				});
+
+				//delay(speed)  & queue
+
+				$("#delaybtn").click(function(){
+
+					// $(".square1").fadeOut();
+					// $(".square1").delay("slow").fadeOut();
+					// $(".square1").delay(2000).fadeOut();
+					// $(".square1").delay(2000).slideUp();
+
+					var sql = $(".square1");
+					sql.animate({"height":100},"slow");
+					sql.animate({"height":200},"slow");
+					sql.animate({"height":200},"slow");
+					sql.animate({"height":300},"slow");
+					sql.animate({"height":300},"slow");
+					sql.animate({"height":150},"slow");
+
+					console.log(sql.queue());
+					console.log(sql.queue().length);
+
+
+				});
+
+
+				$("#clickmebtn").click(function(){
+					$(".square1").html("<i>I am ready to start now</i>").animate({"width":500},2000);
+					$(".square1").html("<i>Ohh, did you click stop btn !</i>.").animate({"width":100},2000);
+				});
+
+				// stop() & stop(true)
+				$("#stopbtn").click(function(){
+					$(".square1").stop();
+				});
+
+				$("#stoptruebtn").click(function(){
+					$(".square1").stop(true);
+				});
+
+				//finish()
+				$("#finishbtn").click(function(){
+					$(".square1").finish();
+				});
+
+				//dequeue()
+				$("#dqbtn").click(function(){
+
+					var div5 = $(".square5");
+
+					div5.animate({width:300,height:300},"slow");
+					div5.animate({width:200,height:200},"slow");
+
+					div5.animate({width:300,height:300},"slow");
+					div5.animate({width:200,height:200},"slow");
+					// div5.css("background-color","steelblue");
+
+					// div5.animate({width:300,height:300},"slow");
+					// div5.animate({width:200,height:200},"slow");
+					div5.queue(function(){
+						
+						div5.css("background-color","steelblue");
+						
+						div5.dequeue();
+
+
+					});
+
+					// div5.slideUp("slow");
+					// div5.slideDown("slow");
+
+					console.log("Total Queue : = " +div5.queue().length);
+
+
+				});
+
+
+				//clearqueue()
+
+				$("#cqbtn").click(function(){
+					// $(".square5").clearQueue();
+
+					$(".square1").clearQueue();
+				});
+
+
+			});
+		</script>
+	</body>
+</html>
+
+<!-- jQuery Effects
+(i) Display Effects = hide() / show() / toggle()
+(ii) Fading Effects = fadeIn() / fadeOut() / fadeToggle() / fadeTo()
+(iii) Sliding Effects = slideDown() / slideUp() / slideToggle()
+(iv) Other Effects = animate() / delay() / stop() / finish() / queue() / dequeue() / clearQueue() 
+	delay() ka css() nae twal tone lo ma ya buu
+	stop()  -> queue 1khu chin si ko stop tr
+	stop(true) -> lone lone stop pyit tr
+	finish() -> last queue ko tan yout twr tr
+	queue() -> asin lite aloat loat tl
+	dequeue() -> queue() ko kana kana pyn call tr(loop)
+	clearQueue() -> first queue ko tot pee aung aloat loat pay tl
+
+-->
